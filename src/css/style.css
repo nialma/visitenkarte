@@ -1,65 +1,39 @@
 /* ============================================================
    style.css – Visitenkarte | nialma
-   Farben: Tailwind Amber-Palette
+   Farben: DBE Academy Style-Guide
    Layout: CSS Flexbox
    Font:   Montserrat (lokal)
    ============================================================ */
 
-/* ── Montserrat lokal ── */
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/montserrat-v31-latin-regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/montserrat-v31-latin-600.woff2') format('woff2');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/montserrat-v31-latin-700.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* ── CSS-Variablen ── */
+/* ── CSS-Variablen (Design Tokens) ── */
 :root {
-    --amber-50: #fffbeb;
-    --amber-100: #fef3c7;
-    --amber-200: #fde68a;
-    --amber-300: #fcd34d;
-    --amber-400: #fbbf24;
-    --amber-500: #f59e0b;
-    --amber-600: #d97706;
-    --amber-700: #b45309;
-    --amber-800: #92400e;
-    --amber-900: #78350f;
-    --amber-950: #451a03;
+    /* Farben aus DBE Style-Guide */
+    --color-primary: #6a74db;
+    --color-secondary: #1b7eda;
+    --color-light-blue: #b3d0ee;
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-gray: #5d5d5d;
 
-    --color-panel-bg: var(--amber-900);
-    --color-panel-text: var(--amber-50);
-    --color-accent: var(--amber-400);
-    --color-card-bg: #ffffff;
-    --color-text-dark: #1a1a1a;
-    --color-text-muted: #5d5d5d;
-
+    /* Transparente Varianten */
     --color-tag-bg: rgba(255, 255, 255, 0.16);
     --color-tag-border: rgba(255, 255, 255, 0.45);
 
+    /* Semantische Tokens */
+    --color-panel-bg: var(--color-primary);
+    --color-panel-text: var(--color-white);
+    --color-card-bg: var(--color-white);
+    --color-text-dark: var(--color-black);
+    --color-text-muted: var(--color-gray);
+
+    /* Schatten aus Style-Guide */
     --shadow-card: 5px 5px 15px -5px rgba(0, 0, 0, 0.5);
 
+    /* Typografie */
     --font-main: 'Montserrat', sans-serif;
 }
 
-/* ── Reset ── */
+/* ── Reset & Basis ── */
 *,
 *::before,
 *::after {
@@ -75,20 +49,20 @@ body {
 
 body {
     font-family: var(--font-main);
-    background-color: var(--amber-950);
+    background-color: var(--color-light-blue);
     color: var(--color-text-dark);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* ── Skip-Link ── */
+/* ── Skip-Link (Barrierefreiheit) ── */
 .skip-link {
     position: absolute;
     top: -40px;
     left: 0;
-    background: var(--amber-500);
-    color: var(--amber-950);
+    background: var(--color-secondary);
+    color: var(--color-white);
     padding: 8px 16px;
     font-weight: 700;
     z-index: 100;
@@ -100,7 +74,7 @@ body {
     top: 0;
 }
 
-/* ── Main ── */
+/* ── Main: nimmt restlichen Platz ── */
 main {
     flex: 1;
     display: flex;
@@ -109,7 +83,7 @@ main {
     padding: 40px 20px;
 }
 
-/* ── Card-Wrapper: zweispaltig ── */
+/* ── Karten-Wrapper: zweispaltig via Flexbox ── */
 .card-wrapper {
     display: flex;
     flex-direction: row;
@@ -128,19 +102,21 @@ main {
     justify-content: center;
 }
 
+/* Linkes Panel: Primärfarbe */
 .panel--left {
     flex: 1.2;
     background-color: var(--color-panel-bg);
     padding: 56px 48px;
 }
 
+/* Rechtes Panel: Weiß */
 .panel--right {
     flex: 1;
     background-color: var(--color-card-bg);
     padding: 48px 40px;
 }
 
-/* ── Linkes Panel ── */
+/* ── Linkes Panel – Inhalt ── */
 .panel__inner {
     display: flex;
     flex-direction: column;
@@ -151,7 +127,7 @@ main {
 .panel__greeting {
     font-size: 1.1rem;
     font-weight: 400;
-    color: var(--amber-300);
+    color: var(--color-light-blue);
     letter-spacing: 0.05em;
 }
 
@@ -165,18 +141,18 @@ main {
 .panel__role {
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--amber-400);
+    color: var(--color-light-blue);
     letter-spacing: 0.03em;
 }
 
 .panel__bio {
     font-size: 0.92rem;
     font-weight: 400;
-    color: var(--amber-100);
+    color: var(--color-white);
     line-height: 1.7;
 }
 
-/* ── Tags ── */
+/* ── Tag-Liste ── */
 .tag-list {
     display: flex;
     flex-direction: row;
@@ -197,7 +173,7 @@ main {
     letter-spacing: 0.04em;
 }
 
-/* ── Profilkarte ── */
+/* ── Rechtes Panel – Profil-Karte ── */
 .profile-card {
     display: flex;
     flex-direction: column;
@@ -207,19 +183,30 @@ main {
     max-width: 320px;
 }
 
+/* Avatar-Ring */
 .avatar-ring {
     width: 110px;
     height: 110px;
     border-radius: 50%;
-    border: 3px solid var(--amber-500);
+    border: 3px solid var(--color-light-blue);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: var(--amber-100);
+    background-color: var(--color-light-blue);
     box-shadow: var(--shadow-card);
 }
 
+/* Bild */
+.avatar-ring img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+/* Fallback-SVG */
 .avatar-fallback {
     width: 100%;
     height: 100%;
@@ -234,6 +221,7 @@ main {
     height: 90px;
 }
 
+/* Profil-Texte */
 .profile-card__name {
     font-size: 1.25rem;
     font-weight: 700;
@@ -270,6 +258,7 @@ main {
     padding: 10px 20px;
     border-radius: 6px;
     text-decoration: none;
+    cursor: pointer;
     transition:
         opacity 0.2s ease,
         transform 0.15s ease;
@@ -281,29 +270,31 @@ main {
     transform: translateY(-1px);
 }
 
+/* Primär-Button: gefüllt */
 .btn--primary {
-    background-color: var(--amber-600);
-    color: #ffffff;
-    border: 2px solid var(--amber-600);
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    border: 2px solid var(--color-secondary);
 }
 
+/* Sekundär-Button: Outline */
 .btn--secondary {
     background-color: transparent;
-    color: var(--amber-700);
-    border: 2px solid var(--amber-600);
+    color: var(--color-secondary);
+    border: 2px solid var(--color-secondary);
 }
 
 /* ── Footer ── */
 .footer {
-    background-color: var(--amber-950);
-    color: var(--amber-300);
+    background-color: var(--color-primary);
+    color: var(--color-white);
     text-align: center;
     padding: 16px 20px;
     font-size: 0.78rem;
 }
 
 .footer a {
-    color: var(--amber-400);
+    color: var(--color-light-blue);
     text-decoration: none;
 }
 
@@ -311,11 +302,12 @@ main {
     text-decoration: underline;
 }
 
-/* ── Responsive ── */
+/* ── Responsive: Mobile (untereinander) ── */
 @media (max-width: 700px) {
     .card-wrapper {
         flex-direction: column;
         min-height: auto;
+        border-radius: 12px;
     }
 
     .panel--left {
