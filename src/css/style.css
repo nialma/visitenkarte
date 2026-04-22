@@ -1,0 +1,344 @@
+/* ============================================================
+   style.css – Visitenkarte | nialma
+   Farben: Tailwind Amber-Palette
+   Layout: CSS Flexbox
+   Font:   Montserrat (lokal)
+   ============================================================ */
+
+/* ── Montserrat lokal ── */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/montserrat-v31-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/montserrat-v31-latin-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/montserrat-v31-latin-700.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ── CSS-Variablen ── */
+:root {
+    --amber-50: #fffbeb;
+    --amber-100: #fef3c7;
+    --amber-200: #fde68a;
+    --amber-300: #fcd34d;
+    --amber-400: #fbbf24;
+    --amber-500: #f59e0b;
+    --amber-600: #d97706;
+    --amber-700: #b45309;
+    --amber-800: #92400e;
+    --amber-900: #78350f;
+    --amber-950: #451a03;
+
+    --color-panel-bg: var(--amber-900);
+    --color-panel-text: var(--amber-50);
+    --color-accent: var(--amber-400);
+    --color-card-bg: #ffffff;
+    --color-text-dark: #1a1a1a;
+    --color-text-muted: #5d5d5d;
+
+    --color-tag-bg: rgba(255, 255, 255, 0.16);
+    --color-tag-border: rgba(255, 255, 255, 0.45);
+
+    --shadow-card: 5px 5px 15px -5px rgba(0, 0, 0, 0.5);
+
+    --font-main: 'Montserrat', sans-serif;
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--amber-950);
+    color: var(--color-text-dark);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ── Skip-Link ── */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--amber-500);
+    color: var(--amber-950);
+    padding: 8px 16px;
+    font-weight: 700;
+    z-index: 100;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ── Main ── */
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* ── Card-Wrapper: zweispaltig ── */
+.card-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1100px;
+    min-height: 520px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+/* ── Panels ── */
+.panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.panel--left {
+    flex: 1.2;
+    background-color: var(--color-panel-bg);
+    padding: 56px 48px;
+}
+
+.panel--right {
+    flex: 1;
+    background-color: var(--color-card-bg);
+    padding: 48px 40px;
+}
+
+/* ── Linkes Panel ── */
+.panel__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 440px;
+}
+
+.panel__greeting {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--amber-300);
+    letter-spacing: 0.05em;
+}
+
+.panel__name {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--color-panel-text);
+    line-height: 1.15;
+}
+
+.panel__role {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--amber-400);
+    letter-spacing: 0.03em;
+}
+
+.panel__bio {
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--amber-100);
+    line-height: 1.7;
+}
+
+/* ── Tags ── */
+.tag-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    margin-top: 8px;
+}
+
+.tag {
+    background-color: var(--color-tag-bg);
+    border: 1px solid var(--color-tag-border);
+    color: var(--color-panel-text);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+}
+
+/* ── Profilkarte ── */
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+    max-width: 320px;
+}
+
+.avatar-ring {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid var(--amber-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--amber-100);
+    box-shadow: var(--shadow-card);
+}
+
+.avatar-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.avatar-fallback svg {
+    width: 90px;
+    height: 90px;
+}
+
+.profile-card__name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.profile-card__role {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+}
+
+.profile-card__desc {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.65;
+}
+
+/* ── Buttons ── */
+.profile-card__actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.btn {
+    display: inline-block;
+    font-family: var(--font-main);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition:
+        opacity 0.2s ease,
+        transform 0.15s ease;
+    letter-spacing: 0.02em;
+}
+
+.btn:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+.btn--primary {
+    background-color: var(--amber-600);
+    color: #ffffff;
+    border: 2px solid var(--amber-600);
+}
+
+.btn--secondary {
+    background-color: transparent;
+    color: var(--amber-700);
+    border: 2px solid var(--amber-600);
+}
+
+/* ── Footer ── */
+.footer {
+    background-color: var(--amber-950);
+    color: var(--amber-300);
+    text-align: center;
+    padding: 16px 20px;
+    font-size: 0.78rem;
+}
+
+.footer a {
+    color: var(--amber-400);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+    .card-wrapper {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .panel--left {
+        padding: 40px 28px;
+    }
+    .panel--right {
+        padding: 36px 28px;
+    }
+
+    .panel__name {
+        font-size: 1.9rem;
+    }
+
+    .profile-card {
+        max-width: 100%;
+    }
+
+    .profile-card__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        text-align: center;
+    }
+}
